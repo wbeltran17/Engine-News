@@ -27,25 +27,27 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final _pages = [cuerpo(), Registro()];
-
+  int _paginaActual=0;
+  List<Widget>_paginas=[
+    miApp(),//0
+    Registro(),//1
+  ];
   @override
   Widget build(BuildContext context) {
-    int _actualPage = 0;
     List<Widget> _pages = [Home(), Registro()];
     return (Scaffold(
       //appBar: AppBar(title: Text(
       //"Ejemplo 1 sesion 4"
       //),
       //),
-      body: _pages[_actualPage], //Llamado al widget cuerpo()
+      body: cuerpo(),  //Llamado al widget cuerpo()
       bottomNavigationBar: BottomNavigationBar(
         onTap: (position) {
           setState(() {
-            _actualPage = position;
+            _paginaActual = position;
           });
         },
-        currentIndex: _actualPage,
+        currentIndex: _paginaActual,
         backgroundColor: Colors.black,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.white,
@@ -181,3 +183,4 @@ Widget registrar() {
 Widget registra(BuildContext context) {
   return Scaffold();
 }
+
