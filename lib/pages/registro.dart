@@ -22,11 +22,11 @@ Widget cuerpo(){
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
+            SizedBox(height: 20.0),
             title(),
-            subtitle(),
-            SizedBox(height: 50.0),
             logo(),
-            SizedBox(height: 40.0),
+            subtitle(),
+            SizedBox(height: 30.0),
             nombre(),
             SizedBox(height: 40.0),
             name(),
@@ -44,38 +44,43 @@ Widget cuerpo(){
       );
 }
 
-Widget title(){
+Widget title() {
   return Text(
-      "Engine News",
-      style: TextStyle(color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold,),
+    "Engine News",
+    style: TextStyle(
+      color: Colors.white,
+      fontSize: 20.0,
+      fontWeight: FontWeight.bold,
+    ),
   );
 }
 
-Widget subtitle(){
+Widget subtitle() {
   return Text(
-      "La red social para redactores de noticias.",
-      style: TextStyle(color: Colors.white, fontSize: 20.0),
+    "La red social para redactores de noticias.",
+    style: TextStyle(color: Colors.white, fontSize: 15.0),
   );
 }
 
-
-Widget logo(){
+Widget logo() {
   return Container(
-    child: Image.network('https://image.flaticon.com/icons/png/512/1253/1253826.png', height: 100),
-    );
+    child: Image.network(
+        'https://image.flaticon.com/icons/png/512/1253/1253826.png',
+        height: 70),
+  );
 }
 
 
 Widget nombre(){
   return Text(
       "Registro de Usuarios",
-      style: TextStyle(color: Colors.white, fontSize: 35.0, fontWeight: FontWeight.bold),
+      style: TextStyle(color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold),
   );
 }
 
 Widget name(){
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 3.0),
+    padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
     child: TextField(
       decoration: InputDecoration(
           hintText: "Digite su nombre",
@@ -89,7 +94,7 @@ Widget name(){
 
 Widget usuario(){
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 3.0),
+    padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
     child: TextField(
       decoration: InputDecoration(
           hintText: "Digite el email",
@@ -103,7 +108,7 @@ Widget usuario(){
 
 Widget contrasena(){
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 3.0),
+    padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
     child: TextField(
       obscureText: true, //Cambiar el texto a modo pass
       decoration: InputDecoration(
@@ -121,7 +126,9 @@ Widget boton_enviar(){
         minWidth: 200.0,
         height: 55.0,
         onPressed:()=> print('Registrar usuario'),
-        color: Colors.lightBlue,
+        color: Colors.indigoAccent, shape: new RoundedRectangleBorder(
+      borderRadius: new BorderRadius.circular(5.0),
+      ),
         child: Text("Registrar usuario", style: TextStyle(color: Colors.white),),
     );
 }
