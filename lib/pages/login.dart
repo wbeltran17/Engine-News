@@ -1,5 +1,12 @@
+import 'dart:js';
+import 'package:engine_news/pages/inicio.dart';
 import 'package:engine_news/pages/registro.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+void main() {
+  runApp(miApp());
+}
 
 
 //Create missing override
@@ -49,13 +56,15 @@ Widget cuerpo() {
           Text("Contraseña", style: TextStyle(color: Colors.white, fontSize: 15.0), textAlign: TextAlign.right,),
           contrasena(),
           SizedBox(height: 20.0),
-          boton_enviar(),
+          boton_enviar(context),
           SizedBox(height: 10.0),
-          //registrar(),
-          //SizedBox(height: 10.0),
-          //botonesSM(),
+          registrar(),
+          SizedBox(height: 10.0),
+          botonesSM(),
           SizedBox(height: 15.0),
           Text("¿Olvidaste tu contraseña?", style: TextStyle(color: Colors.white, fontSize: 15.0), textAlign: TextAlign.left,),
+          SizedBox(height: 15.0),
+          boton_registrar(context)
         ],
       ),
     ),
@@ -126,12 +135,15 @@ Widget contrasena() {
   );
 }
 
-Widget boton_enviar() {
+Widget boton_enviar(context) {
   return MaterialButton(
     padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
     minWidth: 380.0, 
     height: 55.0,
-    onPressed: () => print('Iniciar sesión'),
+    onPressed: () {
+      Get.to(()=>Inicio());
+  },
+    //onPressed: () => Inicio(), //print('Iniciar sesión'),
     color: Colors.indigoAccent, shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(5.0),
     ),
@@ -155,44 +167,73 @@ Widget registrar() {
 Widget botonesSM() {
   return 
   Row( 
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
-      Align(
-        alignment: Alignment.centerLeft,
-        child: 
-      MaterialButton(
-    padding: EdgeInsets.symmetric(horizontal: 110.0, vertical: 3.0), 
-    minWidth: 100.0, 
+      Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.0),
+        child: MaterialButton(
+    //padding: EdgeInsets.symmetric(horizontal: 110.0, vertical: 3.0), 
+    minWidth: 200.0, 
     height: 55.0,
-    onPressed: () => print('Gmail'),
+    onPressed: () {
+            Get.to(()=>Inicio());
+        },
     color: Colors.red[400], shape: new RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(5.0),
+        borderRadius: new BorderRadius.circular(5.0),
     ),
     child: Text(
-      "Gmail",
-      style: TextStyle(color: Colors.white), 
+        "Gmail",
+        style: TextStyle(color: Colors.white), 
     ),
     ),
-    ),
-    Spacer(),
-    Align(
-      alignment: Alignment.centerRight,
-      child:
-    MaterialButton(
-        padding: EdgeInsets.symmetric(horizontal: 110.0, vertical: 3.0),
-    minWidth: 100.0, 
-    height: 55.0,
-    onPressed: () => print('Facebook'),
-    color: Colors.indigo[900], shape: new RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(5.0),
-    ),
-    child: Text(
-      "Facebook",
-      style: TextStyle(color: Colors.white), 
-    ),
-    ),
+      ),
+
+    Container(
+      margin: EdgeInsets.only(right: 20.0),
+      child: MaterialButton(
+      //padding: EdgeInsets.symmetric(horizontal: 110.0, vertical: 3.0),
+      minWidth: 200.0, 
+      height: 55.0,
+      onPressed: () {
+            Get.to(()=>Inicio());
+        },
+      color: Colors.indigo[900], shape: new RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(5.0),
+      ),
+      child: Text(
+        "Facebook",
+        style: TextStyle(color: Colors.white), 
+      ),
+      ),
     )
     ],
     );
+}
+
+Widget boton_registrar(context) {
+  return Container(
+    margin: EdgeInsets.only(right: 40),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      //crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        MaterialButton(
+          padding: EdgeInsets.only(right: 10.0),
+          minWidth: 200.0, 
+          height: 55.0,
+          onPressed: () {
+            Get.to(()=>Registro());
+        },    color: Colors.transparent, shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(5.0),
+          ),
+          child: Text(
+            "Registrarse",
+            style: TextStyle(color: Colors.white), 
+          ),
+        ),
+      ],
+    ),
+  );
 }
 

@@ -1,5 +1,8 @@
 import 'dart:html';
+import 'dart:js';
+import 'package:engine_news/pages/login.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Registro extends StatelessWidget{
   const Registro({Key? key}) : super(key: key);
@@ -14,30 +17,34 @@ class Registro extends StatelessWidget{
 
 Widget cuerpo(){
   return Container(
-      decoration: BoxDecoration(image :DecorationImage(image: NetworkImage("https://images.unsplash.com/photo-1507581332893-aefc5acf08e0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fG5ld3N8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-      fit: BoxFit.cover
-      ),
-      ),
+      //decoration: BoxDecoration(image :DecorationImage(image: NetworkImage("https://images.unsplash.com/photo-1507581332893-aefc5acf08e0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fG5ld3N8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
+      //fit: BoxFit.cover
+      //),
+      //),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
-            SizedBox(height: 20.0),
-            title(),
-            logo(),
-            subtitle(),
-            SizedBox(height: 30.0),
+            SizedBox(height: 10.0),
             nombre(),
-            SizedBox(height: 40.0),
+            SizedBox(height: 25.0),
+            Text("Nombre", style: TextStyle(color: Colors.black, fontSize: 15.0),),
+            SizedBox(height: 5.0),
             name(),
             SizedBox(height: 10.0),
+            Text("Usuario", style: TextStyle(color: Colors.black, fontSize: 15.0),),
+            SizedBox(height: 5.0),
             usuario(),
             SizedBox(height: 10.0),
+            Text("Contraseña", style: TextStyle(color: Colors.black, fontSize: 15.0),),
+            SizedBox(height: 5.0),
             contrasena(),
             SizedBox(height: 30.0),
-            boton_enviar(),
+            boton_enviar(context),
             SizedBox(height: 15.0),
             iniciar_sesion(),
+            SizedBox(height: 15.0),
+            boton_login(context),
             ],
             ),
       ),
@@ -73,8 +80,8 @@ Widget logo() {
 
 Widget nombre(){
   return Text(
-      "Registro de Usuarios",
-      style: TextStyle(color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold),
+      "Registrarse",
+      style: TextStyle(color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.bold),
   );
 }
 
@@ -121,15 +128,20 @@ Widget contrasena(){
   );
 }
 
-Widget boton_enviar(){
+Widget boton_enviar(context){
     return MaterialButton(
         minWidth: 200.0,
         height: 55.0,
-        onPressed:()=> print('Registrar usuario'),
+        onPressed: () {
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Login()),
+  );
+  },
         color: Colors.indigoAccent, shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(5.0),
       ),
-        child: Text("Registrar usuario", style: TextStyle(color: Colors.white),),
+        child: Text("Registrarme", style: TextStyle(color: Colors.white),),
     );
 }
 
@@ -137,9 +149,26 @@ Widget boton_enviar(){
 Widget iniciar_sesion(){
   return Container(
     child: Text(
-      "¿Ya estás registrado? Inicia sesión en la parte inferior. 👇👇",
-      style: TextStyle(color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold),
+      "¿Tienes una cuenta? Inicia sesión 👇👇",
+      style: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold),
   ),
+  );
+}
+
+Widget boton_login(context) {
+  return MaterialButton(
+    padding: EdgeInsets.only(right: 10.0),
+    minWidth: 200.0, 
+    height: 55.0,
+    onPressed: () {
+      Get.to(()=>Login());
+  },    color: Colors.indigoAccent, shape: new RoundedRectangleBorder(
+      borderRadius: new BorderRadius.circular(5.0),
+    ),
+    child: Text(
+      "Login",
+      style: TextStyle(color: Colors.white), 
+    ),
   );
 }
 
