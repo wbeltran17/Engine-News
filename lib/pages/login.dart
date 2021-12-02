@@ -1,4 +1,5 @@
-import 'dart:js';
+
+//import 'dart:js';
 import 'package:engine_news/pages/inicio.dart';
 import 'package:engine_news/pages/registro.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class Login extends StatelessWidget {
   @override 
   Widget build(BuildContext context){
     return Scaffold(
-      body: cuerpo(),        
+      body: cuerpo(context),        
         );
   }
 }
@@ -31,7 +32,7 @@ class Login extends StatelessWidget {
   }
 
 
-Widget cuerpo() {
+Widget cuerpo(BuildContext context) {
   return Container(
     decoration: BoxDecoration(
       image: DecorationImage(

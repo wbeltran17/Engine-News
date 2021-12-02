@@ -12,4 +12,15 @@ void main() {
             await tester.pump();
             expect(find.text('O'), findsOneWidget);
   });
+
+    testWidgets('Simple Title Test', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: title(),
+            )));
+            await tester.pump();
+            expect(find.text('Engine News'), findsOneWidget);
+  });
+
 }

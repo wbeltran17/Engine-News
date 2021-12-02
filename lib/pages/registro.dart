@@ -1,5 +1,4 @@
-import 'dart:html';
-import 'dart:js';
+//import 'dart:js';
 import 'package:engine_news/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,12 +9,12 @@ class Registro extends StatelessWidget{
   @override 
   Widget build(BuildContext context){
     return Scaffold(
-      body: cuerpo(),        
+      body: cuerpo(context),        
         );
   }
 }
 
-Widget cuerpo(){
+Widget cuerpo(BuildContext context){
   return Container(
       //decoration: BoxDecoration(image :DecorationImage(image: NetworkImage("https://images.unsplash.com/photo-1507581332893-aefc5acf08e0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fG5ld3N8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
       //fit: BoxFit.cover
