@@ -5,11 +5,6 @@ import 'package:engine_news/pages/registro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
-  runApp(miApp());
-}
-
-
 //Create missing override
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -33,6 +28,7 @@ class Login extends StatelessWidget {
 
 
 Widget cuerpo(BuildContext context) {
+  
   return Container(
     decoration: BoxDecoration(
       image: DecorationImage(
@@ -63,8 +59,8 @@ Widget cuerpo(BuildContext context) {
           SizedBox(height: 10.0),
           botonesSM(),
           SizedBox(height: 15.0),
-          Text("¿Olvidaste tu contraseña?", style: TextStyle(color: Colors.white, fontSize: 15.0), textAlign: TextAlign.left,),
-          SizedBox(height: 15.0),
+          //Text("¿Olvidaste tu contraseña?", style: TextStyle(color: Colors.white, fontSize: 15.0), textAlign: TextAlign.left,),
+          //SizedBox(height: 15.0),
           boton_registrar(context)
         ],
       ),
@@ -139,7 +135,7 @@ Widget contrasena() {
 Widget boton_enviar(context) {
   return MaterialButton(
     padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
-    minWidth: 380.0, 
+    minWidth: 200.0, 
     height: 55.0,
     onPressed: () {
       Get.to(()=>Inicio());
@@ -175,7 +171,7 @@ Widget botonesSM() {
         margin: EdgeInsets.symmetric(horizontal: 20.0),
         child: MaterialButton(
     //padding: EdgeInsets.symmetric(horizontal: 110.0, vertical: 3.0), 
-    minWidth: 200.0, 
+    minWidth: 100.0, 
     height: 55.0,
     onPressed: () {
             Get.to(()=>Inicio());
@@ -194,7 +190,7 @@ Widget botonesSM() {
       margin: EdgeInsets.only(right: 20.0),
       child: MaterialButton(
       //padding: EdgeInsets.symmetric(horizontal: 110.0, vertical: 3.0),
-      minWidth: 200.0, 
+      minWidth: 100.0, 
       height: 55.0,
       onPressed: () {
             Get.to(()=>Inicio());
@@ -221,8 +217,8 @@ Widget boton_registrar(context) {
       children: [
         MaterialButton(
           padding: EdgeInsets.only(right: 10.0),
-          minWidth: 200.0, 
-          height: 55.0,
+          minWidth: 100.0, 
+          height: 35.0,
           onPressed: () {
             Get.to(()=>Registro());
         },    color: Colors.transparent, shape: new RoundedRectangleBorder(
