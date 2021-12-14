@@ -34,4 +34,6 @@ Widget build(BuildContext context) {
       ),
     );
   }
+
+  //toJson() {}
 }

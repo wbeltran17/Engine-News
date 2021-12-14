@@ -1,3 +1,4 @@
+import 'package:engine_news/pages/ListaMensajes.dart';
 import 'package:engine_news/pages/activities.dart';
 import 'package:engine_news/pages/posts.dart';
 import 'package:engine_news/pages/publish.dart';
@@ -25,7 +26,7 @@ class _MyAppState extends State<Inicio> {
   int _paginaActual=0;
   List<Widget>_paginas=[
     Activities(),//0
-    Posts(),//1
+    ListaMensajes(),//1
     Publish(),//2
   ];
   @override

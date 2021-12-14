@@ -7,42 +7,13 @@ import 'package:get/get.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp().then((value){
-  runApp(const miApp());
+  runApp(const myApp());
 });
 }
 
 //Create missing override
-class miApp extends StatelessWidget {
-  const miApp({Key? key}) : super(key: key);
-
-
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Engine News', 
-      home: Login(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  void initState() {
-    super.initState();
-    //llamado del método
-    getUsers();
-  } 
+class myApp extends StatelessWidget {
+  const myApp({Key? key}) : super(key: key);
 
 void getUsers() async{
   CollectionReference coleccion=FirebaseFirestore.instance.collection('users');
@@ -56,8 +27,13 @@ void getUsers() async{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    getUsers();
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Engine News', 
+      home: Login(),
+    );
   }
 }
+
 
