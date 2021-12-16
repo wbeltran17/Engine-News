@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp().then((value){
   runApp(const myApp());
@@ -15,19 +15,19 @@ void main() {
 class myApp extends StatelessWidget {
   const myApp({Key? key}) : super(key: key);
 
-void getUsers() async{
-  CollectionReference coleccion=FirebaseFirestore.instance.collection('users');
-  QuerySnapshot users=await coleccion.get();
-  if (users.docs.length!=0){
-    for (var doc in users.docs) {
-      print(doc.data());
-    }
-  }
-}
+//void getUsers() async{
+//  CollectionReference coleccion=FirebaseFirestore.instance.collection('users');
+//  QuerySnapshot users=await coleccion.get();
+//  if (users.docs.length!=0){
+//    for (var doc in users.docs) {
+//      print(doc.data());
+//    }
+//  }
+//}
 
   @override
   Widget build(BuildContext context) {
-    getUsers();
+    //getUsers();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Engine News', 

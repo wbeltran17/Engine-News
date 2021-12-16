@@ -1,11 +1,13 @@
+import 'package:engine_news/controllers/servicios.dart';
 import 'package:engine_news/pages/inicio.dart';
 import 'package:engine_news/pages/registro.dart';
+import 'package:engine_news/pages/resetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 //Create missing override
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+
 
   @override 
   Widget build(BuildContext context){
@@ -16,6 +18,11 @@ class Login extends StatelessWidget {
 }
 
 Widget cuerpo(BuildContext context) {
+   TextEditingController emailcontroller=TextEditingController();
+  TextEditingController passwordcontroller=TextEditingController();
+  Service service= Service();
+
+
   
   return ListView(
     children: [
@@ -38,20 +45,95 @@ Widget cuerpo(BuildContext context) {
               nombre(),
               SizedBox(height: 20.0),
               Text("Correo", style: TextStyle(color: Colors.white, fontSize: 15.0),),
-              usuario(),
-              SizedBox(height: 5.0),
-              Text("Contraseña", style: TextStyle(color: Colors.white, fontSize: 15.0), textAlign: TextAlign.right,),
-              contrasena(),
-              SizedBox(height: 20.0),
-              boton_enviar(context),
-              SizedBox(height: 10.0),
-              registrar(),
+
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
+                child: TextField(
+                  controller: emailcontroller,
+                  decoration: InputDecoration(
+                    hintText: 'Ingrese su Email',
+                  fillColor: Colors.white,
+                  filled: true,
+
+                  ),
+                ),
+                ),
+                SizedBox(height: 10.0),
+              Text("Contraseña", style: TextStyle(color: Colors.white, fontSize: 15.0),),
+                //TextField Password
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
+                child: TextField(
+                  controller: passwordcontroller,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: 'Ingrese su Password',
+                    fillColor: Colors.white,
+                    filled: true,
+
+                  ),
+                ),
+                ),
+
+
+                //botón login
+                Padding(
+                  padding: EdgeInsets.only(top: 15),
+                  child: ElevatedButton(
+                    style: TextButton.styleFrom(
+                      minimumSize: Size(150, 40),
+                      padding: EdgeInsets.symmetric(horizontal: 80), backgroundColor: Colors.indigoAccent, shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(5.0), 
+                    ),
+                    ),
+                    onPressed: (){
+                      //Método Login con usuario, aquí ya debe tener credenciales
+                      if (emailcontroller.text.isNotEmpty && passwordcontroller.text.isNotEmpty) {
+                        service.Login(context, emailcontroller.text, passwordcontroller.text);
+                      }
+                      else{
+                        service.errorbox(context, 'Los campos no pueden estar vacíos');
+                      }
+                    },
+                    child: Text('Login'),
+                  ),
+                ),
+
+                //////TextButton --- no tiene una cuenta?
+                TextButton(
+                  onPressed: (){
+                    Get.to(()=>Registro());
+                   
+                    //Llevar a página de registro
+                  }, 
+                  
+                  child: Text('¿No tiene cuenta? Regístrate aquí', style: TextStyle(color: Colors.white),)
+                  ),
+                  //////TextButton --- Olvidé mi contraseña?
+                  TextButton(
+                  onPressed: (){
+                     Get.to(()=>ResetPassword());
+                    //Llevar a página de Reset Password
+                  }, 
+                  child: Text('Olvidé mi contraseña', style: TextStyle(color: Colors.white),)
+                  ),
+
+
+
+              //usuario(),
+              //SizedBox(height: 5.0),
+              //Text("Contraseña", style: TextStyle(color: Colors.white, fontSize: 15.0), textAlign: TextAlign.right,),
+              //contrasena(),
+              //SizedBox(height: 20.0),
+              //boton_enviar(context),
+              //SizedBox(height: 10.0),
+              //registrar(),
               SizedBox(height: 10.0),
               botonesSM(),
               SizedBox(height: 15.0),
               //Text("¿Olvidaste tu contraseña?", style: TextStyle(color: Colors.white, fontSize: 15.0), textAlign: TextAlign.left,),
               //SizedBox(height: 15.0),
-              boton_registrar(context)
+              //boton_registrar(context)
             ],
           ),
         ),
@@ -95,6 +177,7 @@ Widget nombre() {
 }
 
 Widget usuario() {
+    TextEditingController emailcontroller=TextEditingController();
   return Container( 
     padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
     child: TextField(
@@ -110,6 +193,7 @@ Widget usuario() {
 }
 
 Widget contrasena() {
+    TextEditingController passwordcontroller=TextEditingController();
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
     child: TextField(
@@ -125,12 +209,20 @@ Widget contrasena() {
 }
 
 Widget boton_enviar(context) {
+  TextEditingController emailcontroller=TextEditingController();
+  TextEditingController passwordcontroller=TextEditingController();
+  Service service= Service();
   return MaterialButton(
     padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 3.0),
     minWidth: 210.0, 
     height: 55.0,
     onPressed: () {
-      Get.to(()=>Inicio());
+      if (emailcontroller.text.isNotEmpty && passwordcontroller.text.isNotEmpty) {
+          service.Login(context, emailcontroller.text, passwordcontroller.text);
+          }
+          else{
+          service.errorbox(context, 'Los campos no pueden estar vacíos');
+          }
   },
     //onPressed: () => Inicio(), //print('Iniciar sesión'),
     color: Colors.indigoAccent, shape: new RoundedRectangleBorder(
