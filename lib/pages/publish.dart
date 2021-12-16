@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'login.dart';
 
 class Publish extends StatelessWidget {
   const Publish({Key? key}) : super(key: key);
@@ -31,6 +34,13 @@ Widget build(BuildContext context) {
             child: Text('Espacio para Publicar Posts'),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add_circle),
+          backgroundColor: Colors.blue,
+          onPressed: (){
+            Get.to(()=>Login());
+          }
+        ,),
       ),
     );
   }
