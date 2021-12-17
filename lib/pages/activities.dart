@@ -1,22 +1,32 @@
 import 'package:engine_news/models/mensaje.dart';
 import 'package:engine_news/models/mensaje_da.dart';
-import 'package:engine_news/pages/Inicio.dart';
+import 'package:engine_news/models/theme_preferences.dart';
 import 'package:engine_news/pages/login.dart';
 import 'package:engine_news/pages/mensajewidget.dart';
+import 'package:engine_news/providers/theme.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
-class Activities extends StatelessWidget {
-  
+class Activities extends StatefulWidget {
   const Activities({Key? key}) : super(key: key);
 
   @override
+  State<Activities> createState() => _ActivitiesState();
+}
+
+class _ActivitiesState extends State<Activities> {
+  @override
   Widget build(BuildContext context) {
+        final currentTheme = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Feed de Actividades',
       home: Scaffold(
+        backgroundColor:
+            currentTheme.isDarkTheme() ? Color(0xff2a293d) : Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -29,10 +39,25 @@ class Activities extends StatelessWidget {
                 height: 32,
               ),
               Container(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(4.0),
                 child: Text('Feed de Actividades',
-                    style: TextStyle(color: Colors.black)),
+                    style: TextStyle(color: currentTheme.isDarkTheme()
+                        ? Colors.white
+                        : Colors.black,)),
               ),
+              Icon(Icons.wb_sunny, 
+                  color:
+                      currentTheme.isDarkTheme() ? Colors.white : Colors.black),
+              Switch(
+                  value: currentTheme.isDarkTheme(),
+                  onChanged: (value) {
+                    String newTheme =
+                        value ? ThemePreference.DARK : ThemePreference.LIGHT;
+                    currentTheme.setTheme = newTheme;
+                  }),
+              Icon(Icons.brightness_2,
+                  color:
+                      currentTheme.isDarkTheme() ? Colors.white : Colors.black)
             ],
           ),
         ),
@@ -55,8 +80,6 @@ class Activities extends StatelessWidget {
     );
   }
 
-
-  
   Widget _getActivities() {
     ScrollController _scrollController = ScrollController();
     

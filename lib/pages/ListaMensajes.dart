@@ -1,5 +1,7 @@
 import 'package:engine_news/pages/mensajewidget.dart';
+import 'package:engine_news/providers/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../models/mensaje.dart';
 import '../../models/mensaje_da.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -17,10 +19,16 @@ class _ListaMensajesState extends State<ListaMensajes> {
   ScrollController _scrollController = ScrollController();
   TextEditingController _mensajeController = TextEditingController();
 
+    get currentTheme => null;
+
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<ThemeProvider>(context);
     WidgetsBinding.instance!.addPostFrameCallback((_) => _scrollHaciaAbajo());
     return Scaffold(
+        backgroundColor: currentTheme.isDarkTheme()
+        ? Color(0xff2a293d)
+        : Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -35,7 +43,11 @@ class _ListaMensajesState extends State<ListaMensajes> {
             Container(
               padding: const EdgeInsets.all(8.0),
               child:
-                  Text('Feed de Posts', style: TextStyle(color: Colors.black)),
+                  Text('Feed de Posts', style: TextStyle(color: currentTheme.isDarkTheme()
+                  ? Colors.white
+                  : Colors.black,
+              
+                  ),),
             ),
           ],
         ),
@@ -59,13 +71,30 @@ class _ListaMensajesState extends State<ListaMensajes> {
                       _enviarMensaje(); //Construir
                     },
                     decoration:
-                        InputDecoration(hintText: 'Escribir un mensaje'),
+                        InputDecoration(hintText: 'Escribir un mensaje', hintStyle: (TextStyle(
+                color: currentTheme.isDarkTheme()
+                  ? Colors.white
+                  : Colors.black,
+                        )),
+                                enabledBorder: new UnderlineInputBorder(
+                borderSide: BorderSide(
+                color: currentTheme.isDarkTheme()
+                  ? Colors.white
+                  : Colors.black,
+                width: 0.3, 
+                //style: BorderStyle.none 
+                ),
+              ),
                   ),
-                )),
+                      ),
+                     ),
+              ),
                 IconButton(
                   icon: Icon(_puedoEnviarMensaje()
                       ? CupertinoIcons.arrow_right_circle_fill
-                      : CupertinoIcons.arrow_right_circle),
+                      : CupertinoIcons.arrow_right_circle,                     color: currentTheme.isDarkTheme()
+                      ? Colors.white
+                      : Colors.black,),
                   onPressed: () {
                     _enviarMensaje();
                   },

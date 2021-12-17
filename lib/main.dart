@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:engine_news/pages/login.dart';
+import 'package:engine_news/providers/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,26 +14,37 @@ void main() async {
 }
 
 //Create missing override
-class myApp extends StatelessWidget {
+class myApp extends StatefulWidget {
   const myApp({Key? key}) : super(key: key);
 
-//void getUsers() async{
-//  CollectionReference coleccion=FirebaseFirestore.instance.collection('users');
-//  QuerySnapshot users=await coleccion.get();
-//  if (users.docs.length!=0){
-//    for (var doc in users.docs) {
-//      print(doc.data());
-//    }
-//  }
-//}
+  @override
+  State<myApp> createState() => _myAppState();
+}
+
+class _myAppState extends State<myApp> {
+    ThemeProvider themeChangeProvider = new ThemeProvider();
+
+    
+  @override
+  void initState() { 
+    super.initState();
+    getCurrentAppTheme();
+  }
+
+    void getCurrentAppTheme() async {
+    themeChangeProvider.setTheme = await themeChangeProvider.themePreference.getTheme();
+  }
 
   @override
   Widget build(BuildContext context) {
     //getUsers();
-    return GetMaterialApp(
+    return ChangeNotifierProvider.value(
+      value: themeChangeProvider,
+    child: GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Engine News', 
       home: Login(),
+    ),
     );
   }
 }
