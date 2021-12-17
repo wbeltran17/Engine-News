@@ -24,7 +24,7 @@ class _ListaMensajesState extends State<ListaMensajes> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = Provider.of<ThemeProvider>(context);
-    WidgetsBinding.instance!.addPostFrameCallback((_) => _scrollHaciaAbajo());
+   WidgetsBinding.instance!.addPostFrameCallback((_) => _scrollHaciaAbajo());
     return Scaffold(
         backgroundColor: currentTheme.isDarkTheme()
         ? Color(0xff2a293d)

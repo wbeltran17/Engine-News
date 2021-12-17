@@ -1,6 +1,5 @@
 import 'package:engine_news/models/mensaje.dart';
 import 'package:engine_news/models/mensaje_da.dart';
-import 'package:engine_news/models/theme_preferences.dart';
 import 'package:engine_news/pages/login.dart';
 import 'package:engine_news/pages/mensajewidget.dart';
 import 'package:engine_news/providers/theme.dart';
@@ -9,6 +8,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+
 
 class Activities extends StatefulWidget {
   const Activities({Key? key}) : super(key: key);
@@ -61,9 +61,10 @@ class _ActivitiesState extends State<Activities> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add_circle),
+          child: Icon(Icons.logout_rounded),
           backgroundColor: Colors.blue,
           onPressed: () {
+          //Logout().signOut;
             Get.to(() => Login());
           },
         ),

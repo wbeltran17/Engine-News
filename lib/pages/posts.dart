@@ -20,7 +20,7 @@ Widget build(BuildContext context) {
                   height: 32,
               ),
               Container(
-                  padding: const EdgeInsets.all(8.0), child: Text('Feed de Posts', style: TextStyle(color: Colors.black)
+                  padding: const EdgeInsets.all(4.0), child: Text('Feed de Posts', style: TextStyle(color: Colors.black)
                   ), 
                   ), 
             ],
