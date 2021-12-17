@@ -58,5 +58,29 @@ void errorbox(context, e){
     }
   }
 
+}
 
+class Logout{
+  final auth= FirebaseAuth.instance;
+//signout
+  void signOut(context) async {
+  try{
+    await auth.signOut();
+    Get.to(()=>Login());
+
+  }
+  catch (e){
+    errorbox(context,e);
+  }
+}
+
+//mensaje de error
+void errorbox(context, e){
+  showDialog(context: context, builder: (context){
+    return AlertDialog(
+      title: Text('Error'),
+      content: Text(e.toString()),
+    );
+  });
+}
 }

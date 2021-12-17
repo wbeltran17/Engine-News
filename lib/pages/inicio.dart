@@ -1,6 +1,6 @@
 import 'package:engine_news/pages/ListaMensajes.dart';
 import 'package:engine_news/pages/activities.dart';
-import 'package:engine_news/pages/posts.dart';
+import 'package:engine_news/pages/login.dart';
 import 'package:engine_news/pages/publish.dart';
 import 'package:engine_news/providers/theme.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +54,7 @@ class _MyAppState extends State<Inicio> {
           BottomNavigationBarItem(icon: Icon(Icons.local_activity_outlined), label: "Actividades"),
           BottomNavigationBarItem(icon: Icon(Icons.content_copy_outlined), label: "Posts"),
           BottomNavigationBarItem(icon: Icon(Icons.publish_outlined), label: "Publicar"),
+
         ],
       ),
     ));
