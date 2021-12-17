@@ -4,6 +4,7 @@ import 'package:engine_news/pages/registro.dart';
 import 'package:engine_news/pages/resetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 //Create missing override
 class Login extends StatelessWidget {
@@ -31,7 +32,7 @@ Widget cuerpo(BuildContext context) {
           image: DecorationImage(
               image: NetworkImage(
                   "https://images.unsplash.com/photo-1507581332893-aefc5acf08e0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fG5ld3N8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-              fit: BoxFit.fill),
+              fit: BoxFit.cover),
         ),
         child: Center(
           child: Column(
@@ -134,6 +135,7 @@ Widget cuerpo(BuildContext context) {
               //Text("¿Olvidaste tu contraseña?", style: TextStyle(color: Colors.white, fontSize: 15.0), textAlign: TextAlign.left,),
               //SizedBox(height: 15.0),
               //boton_registrar(context)
+              
             ],
           ),
         ),

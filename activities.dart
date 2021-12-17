@@ -1,17 +1,18 @@
+import 'package:engine_news/pages/Inicio.dart';
+import 'package:engine_news/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'login.dart';
-
-class Publish extends StatelessWidget {
-  const Publish({Key? key}) : super(key: key);
+class Activities extends StatelessWidget {
+  const Activities({Key? key}) : super(key: key);
 
   @override
 Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Publicar',
+      title: 'Feed de Actividades',
       home: Scaffold(
+
     appBar: AppBar(
     backgroundColor: Colors.transparent, elevation: 0.0,
     title: Row(
@@ -23,15 +24,18 @@ Widget build(BuildContext context) {
                   height: 32,
               ),
               Container(
-                  padding: const EdgeInsets.all(8.0), child: Text('Publicar Posts', style: TextStyle(color: Colors.black)
+                  padding: const EdgeInsets.all(8.0), child: Text('Feed de Actividades', style: TextStyle(color: Colors.black)
                   ), 
                   ), 
             ],
+            
           ),
+          
   ),
+
         body: Center(
           child: Container(
-            child: Text('Espacio para Publicar Posts'),
+            child: Text('Feed de Actividades'),
           ),
         ),
         floatingActionButton: FloatingActionButton(
