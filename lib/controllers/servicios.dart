@@ -72,9 +72,6 @@ class Service {
       errorbox(context, e);
     }
   }
-<<<<<<< HEAD
-}
-=======
 
 }
 
@@ -84,6 +81,8 @@ class Logout{
   void signOut(context) async {
   try{
     await auth.signOut();
+    final prefs = await SharedPreferences.getInstance();
+    prefs.remove('sesion_ok') ;
     Get.to(()=>Login());
 
   }
@@ -102,4 +101,3 @@ void errorbox(context, e){
   });
 }
 }
->>>>>>> 7154c336db4d02c5db45d0c449c1923e4e6d8634
