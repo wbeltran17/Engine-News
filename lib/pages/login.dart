@@ -4,6 +4,7 @@ import 'package:engine_news/pages/registro.dart';
 import 'package:engine_news/pages/resetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //Create missing override
 class Login extends StatelessWidget {
@@ -22,8 +23,7 @@ Widget cuerpo(BuildContext context) {
   TextEditingController passwordcontroller=TextEditingController();
   Service service= Service();
 
-
-  
+  service.sessionExits();
   return ListView(
     children: [
       Container(
