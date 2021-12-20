@@ -1,13 +1,14 @@
 import 'package:engine_news/models/mensaje.dart';
 import 'package:engine_news/models/mensaje_da.dart';
-import 'package:engine_news/models/theme_preferences.dart';
 import 'package:engine_news/pages/login.dart';
 import 'package:engine_news/pages/mensajewidget.dart';
 import 'package:engine_news/providers/theme.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+
 
 class Activities extends StatefulWidget {
   const Activities({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class Activities extends StatefulWidget {
 class _ActivitiesState extends State<Activities> {
   @override
   Widget build(BuildContext context) {
-        final currentTheme = Provider.of<ThemeProvider>(context);
+    final currentTheme = Provider.of<ThemeProvider>(context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -41,38 +42,29 @@ class _ActivitiesState extends State<Activities> {
               Container(
                 padding: const EdgeInsets.all(4.0),
                 child: Text('Feed de Actividades',
-                    style: TextStyle(color: currentTheme.isDarkTheme()
-                        ? Colors.white
-                        : Colors.black,)),
+                    style: TextStyle(
+                      color: currentTheme.isDarkTheme()
+                          ? Colors.white
+                          : Colors.black,
+                    )),
               ),
-              Icon(Icons.wb_sunny, 
-                  color:
-                      currentTheme.isDarkTheme() ? Colors.white : Colors.black),
-              Switch(
-                  value: currentTheme.isDarkTheme(),
-                  onChanged: (value) {
-                    String newTheme =
-                        value ? ThemePreference.DARK : ThemePreference.LIGHT;
-                    currentTheme.setTheme = newTheme;
-                  }),
-              Icon(Icons.brightness_2,
-                  color:
-                      currentTheme.isDarkTheme() ? Colors.white : Colors.black)
+              
             ],
           ),
         ),
-        body:Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            _getActivities(),
-          ],
+        body: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              _getActivities(),
+            ],
+          ),
         ),
-      ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add_circle),
+          child: Icon(Icons.logout_rounded),
           backgroundColor: Colors.blue,
           onPressed: () {
+          //Logout().signOut;
             Get.to(() => Login());
           },
         ),
@@ -82,11 +74,14 @@ class _ActivitiesState extends State<Activities> {
 
   Widget _getActivities() {
     ScrollController _scrollController = ScrollController();
-    
-    WidgetsBinding.instance!.addPostFrameCallback((_) => (){if (_scrollController.hasClients) {
-      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-    }});
-  final mensajeDA = MensajeDA();
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) => () {
+          if (_scrollController.hasClients) {
+            _scrollController
+                .jumpTo(_scrollController.position.maxScrollExtent);
+          }
+        });
+    final mensajeDA = MensajeDA();
     return Expanded(
         child: FirebaseAnimatedList(
       controller: ScrollController(),
