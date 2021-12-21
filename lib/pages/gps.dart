@@ -40,9 +40,7 @@ class _GpsState extends State<Gps> {
                 padding: const EdgeInsets.all(4.0),
                 child: Text('Mi ubicación',
                     style: TextStyle(
-                      color: currentTheme.isDarkTheme()
-                          ? Colors.white
-                          : Colors.black,
+                      color: currentTheme.getOppositeTheme(),
                     )),
               ),
             ],
@@ -71,17 +69,13 @@ class _GpsState extends State<Gps> {
                           children: [
                             Text('Latitud',
                                 style: TextStyle(
-                                    color: currentTheme.isDarkTheme()
-                                        ? Colors.white
-                                        : Colors.black,
+                                    color: currentTheme.getOppositeTheme(),
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold)),
                             Text(
                               '${_locationData.latitude}',
                               style: TextStyle(
-                                  color: currentTheme.isDarkTheme()
-                                      ? Colors.white
-                                      : Colors.black),
+                                  color: currentTheme.getOppositeTheme()),
                             ),
                           ],
                         ))),
@@ -99,17 +93,13 @@ class _GpsState extends State<Gps> {
                           children: [
                             Text('Longitud',
                                 style: TextStyle(
-                                    color: currentTheme.isDarkTheme()
-                                        ? Colors.white
-                                        : Colors.black,
+                                    color: currentTheme.getOppositeTheme(),
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold)),
                             Text(
                               '${_locationData.longitude}',
                               style: TextStyle(
-                                  color: currentTheme.isDarkTheme()
-                                      ? Colors.white
-                                      : Colors.black),
+                                  color: currentTheme.getOppositeTheme()),
                             ),
                           ],
                         ))),
@@ -127,16 +117,12 @@ class _GpsState extends State<Gps> {
                           children: [
                             Text('Altitud',
                                 style: TextStyle(
-                                    color: currentTheme.isDarkTheme()
-                                        ? Colors.white
-                                        : Colors.black,
+                                    color: currentTheme.getOppositeTheme(),
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold)),
                             Text('${_locationData.altitude}',
                                 style: TextStyle(
-                                  color: currentTheme.isDarkTheme()
-                                      ? Colors.white
-                                      : Colors.black,
+                                  color: currentTheme.getOppositeTheme(),
                                 )),
                           ],
                         ))),
@@ -154,16 +140,12 @@ class _GpsState extends State<Gps> {
                           children: [
                             Text('Dirección',
                                 style: TextStyle(
-                                    color: currentTheme.isDarkTheme()
-                                        ? Colors.white
-                                        : Colors.black,
+                                    color: currentTheme.getOppositeTheme(),
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold)),
                             Text('${_locationData.heading}',
                                 style: TextStyle(
-                                  color: currentTheme.isDarkTheme()
-                                      ? Colors.white
-                                      : Colors.black,
+                                  color: currentTheme.getOppositeTheme(),
                                 )),
                           ],
                         ))),
