@@ -23,12 +23,13 @@ class _SettingsState extends State<Settings> {
       title: 'Ajustes',
       home: Scaffold(
         backgroundColor:
-            currentTheme.getTheme(),
+            currentTheme.isDarkTheme() ? Color(0xFF212121) : Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor:
+          currentTheme.isDarkTheme() ? Color(0xFF303030) : Colors.white,
           elevation: 0.0,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 padding: const EdgeInsets.all(8.0),

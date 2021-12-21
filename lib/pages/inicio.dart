@@ -6,6 +6,8 @@ import 'package:engine_news/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'gps.dart';
+
 class miApp extends StatelessWidget {
   const miApp({Key? key}) : super(key: key);
 
@@ -31,6 +33,7 @@ class _MyAppState extends State<Inicio> {
     ListaMensajes(), //1
     Publish(), //2
     Settings(), //3
+    Gps(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -64,6 +67,8 @@ class _MyAppState extends State<Inicio> {
               icon: Icon(Icons.settings),
               label: "Ajustes",
               backgroundColor: currentTheme.getTheme()),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.location_pin), label: "ubicacion"),
         ],
       ),
     ));

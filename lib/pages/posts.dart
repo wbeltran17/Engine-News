@@ -36,6 +36,4 @@ class Posts extends StatelessWidget {
       ),
     );
   }
-
-  //toJson() {}
 }
