@@ -1,9 +1,9 @@
-import 'package:engine_news/pages/mensajewidget.dart';
+import 'package:engine_news/widget/mensajewidget.dart';
 import 'package:engine_news/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/mensaje.dart';
-import '../../models/mensaje_da.dart';
+import '../DAO/mensaje_da.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -19,16 +19,15 @@ class _ListaMensajesState extends State<ListaMensajes> {
   ScrollController _scrollController = ScrollController();
   TextEditingController _mensajeController = TextEditingController();
 
-    get currentTheme => null;
+  get currentTheme => null;
 
   @override
   Widget build(BuildContext context) {
     final currentTheme = Provider.of<ThemeProvider>(context);
-   WidgetsBinding.instance!.addPostFrameCallback((_) => _scrollHaciaAbajo());
+    WidgetsBinding.instance!.addPostFrameCallback((_) => _scrollHaciaAbajo());
     return Scaffold(
-        backgroundColor: currentTheme.isDarkTheme()
-        ? Color(0xff2a293d)
-        : Colors.white,
+      backgroundColor:
+          currentTheme.isDarkTheme() ? Color(0xff2a293d) : Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -42,12 +41,13 @@ class _ListaMensajesState extends State<ListaMensajes> {
             ),
             Container(
               padding: const EdgeInsets.all(8.0),
-              child:
-                  Text('Feed de Posts', style: TextStyle(color: currentTheme.isDarkTheme()
-                  ? Colors.white
-                  : Colors.black,
-              
-                  ),),
+              child: Text(
+                'Feed de Posts',
+                style: TextStyle(
+                  color:
+                      currentTheme.getOppositeTheme(),
+                ),
+              ),
             ),
           ],
         ),
@@ -61,40 +61,38 @@ class _ListaMensajesState extends State<ListaMensajes> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Flexible(
-                    child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12.0),
-                  child: TextField(
-                    keyboardType: TextInputType.text,
-                    controller: _mensajeController, //Construir
-                    onChanged: (text) => setState(() {}),
-                    onSubmitted: (input) {
-                      _enviarMensaje(); //Construir
-                    },
-                    decoration:
-                        InputDecoration(hintText: 'Escribir un mensaje', hintStyle: (TextStyle(
-                color: currentTheme.isDarkTheme()
-                  ? Colors.white
-                  : Colors.black,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.0),
+                    child: TextField(
+                      keyboardType: TextInputType.text,
+                      controller: _mensajeController, //Construir
+                      onChanged: (text) => setState(() {}),
+                      onSubmitted: (input) {
+                        _enviarMensaje(); //Construir
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Escribir un mensaje',
+                        hintStyle: (TextStyle(
+                          color: currentTheme.getOppositeTheme(),
                         )),
-                                enabledBorder: new UnderlineInputBorder(
-                borderSide: BorderSide(
-                color: currentTheme.isDarkTheme()
-                  ? Colors.white
-                  : Colors.black,
-                width: 0.3, 
-                //style: BorderStyle.none 
-                ),
-              ),
-                  ),
+                        enabledBorder: new UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: currentTheme.getOppositeTheme(),
+                            width: 0.3,
+                            //style: BorderStyle.none
+                          ),
+                        ),
                       ),
-                     ),
-              ),
+                    ),
+                  ),
+                ),
                 IconButton(
-                  icon: Icon(_puedoEnviarMensaje()
-                      ? CupertinoIcons.arrow_right_circle_fill
-                      : CupertinoIcons.arrow_right_circle,                     color: currentTheme.isDarkTheme()
-                      ? Colors.white
-                      : Colors.black,),
+                  icon: Icon(
+                    _puedoEnviarMensaje()
+                        ? CupertinoIcons.arrow_right_circle_fill
+                        : CupertinoIcons.arrow_right_circle,
+                    color: currentTheme.getOppositeTheme(),
+                  ),
                   onPressed: () {
                     _enviarMensaje();
                   },

@@ -30,7 +30,7 @@ class _MyAppState extends State<Inicio> {
     Activities(), //0
     ListaMensajes(), //1
     Publish(), //2
-    Settings(),//3
+    Settings(), //3
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,25 +44,26 @@ class _MyAppState extends State<Inicio> {
             _paginaActual = position;
           });
         },
-        backgroundColor:
-            currentTheme.isDarkTheme()
-                        ? Colors.white
-                        : Colors.black,
         currentIndex: _paginaActual,
-        //backgroundColor: Colors.white,
         selectedItemColor: Colors.blue,
-        unselectedItemColor:
-            currentTheme.isDarkTheme() ? Colors.white : Colors.black,
+        unselectedItemColor: currentTheme.getOppositeTheme(),
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.local_activity_outlined),
-               label: "Actividades"),
+              label: "Actividades",
+              backgroundColor: currentTheme.getTheme()),
           BottomNavigationBarItem(
-              icon: Icon(Icons.content_copy_outlined), label: "Posts"),
+              icon: Icon(Icons.message),
+              label: "Chat",
+              backgroundColor: currentTheme.getTheme()),
           BottomNavigationBarItem(
-              icon: Icon(Icons.publish_outlined), label: "Publicar"),
+              icon: Icon(Icons.publish_outlined),
+              label: "Publicar",
+              backgroundColor: currentTheme.getTheme()),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: "Ajustes"),
+              icon: Icon(Icons.settings),
+              label: "Ajustes",
+              backgroundColor: currentTheme.getTheme()),
         ],
       ),
     ));

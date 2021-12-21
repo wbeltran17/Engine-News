@@ -1,3 +1,4 @@
+import 'package:engine_news/controllers/servicios.dart';
 import 'package:engine_news/models/theme_preferences.dart';
 import 'package:engine_news/providers/theme.dart';
 
@@ -12,6 +13,7 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  Service service = Service();
   @override
   Widget build(BuildContext context) {
     final currentTheme = Provider.of<ThemeProvider>(context);
@@ -21,7 +23,7 @@ class _SettingsState extends State<Settings> {
       title: 'Ajustes',
       home: Scaffold(
         backgroundColor:
-            currentTheme.isDarkTheme() ? Colors.white : Colors.black,
+            currentTheme.getTheme(),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -33,9 +35,7 @@ class _SettingsState extends State<Settings> {
                 child: Text(
                   'Ajustes',
                   style: TextStyle(
-                    color: currentTheme.isDarkTheme()
-                        ? Colors.white
-                        : Colors.black,
+                    color: currentTheme.getOppositeTheme(),
                   ),
                 ),
               ),
@@ -44,32 +44,54 @@ class _SettingsState extends State<Settings> {
         ),
         body: Padding(
           padding: EdgeInsets.all(16.0),
-          child: Row(
+          child: Column(
             children: [
-              Text("Tema:"
-              ,
-                  style: TextStyle(
-                    color: currentTheme.isDarkTheme()
-                        ? Colors.white
-                        : Colors.black,)),
-              Icon(Icons.wb_sunny,
-                  color:
-                      currentTheme.isDarkTheme() ? Colors.white : Colors.black),
-              Switch(
-                  value: currentTheme.isDarkTheme(),
-                  onChanged: (value) {
-                    String newTheme =
-                        value ? ThemePreference.DARK : ThemePreference.LIGHT;
-                    currentTheme.setTheme = newTheme;
-                  }),
-              Icon(Icons.brightness_2,
-                  color:
-                      currentTheme.isDarkTheme() ? Colors.white : Colors.black)
+              Row(
+                children: [
+                  Text("Tema: ",
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: currentTheme.getOppositeTheme(),
+                      )),
+                  Icon(Icons.wb_sunny,
+                      color: currentTheme.getOppositeTheme()),
+                  Switch(
+                      value: currentTheme.isDarkTheme(),
+                      onChanged: (value) {
+                        String newTheme = value
+                            ? ThemePreference.DARK
+                            : ThemePreference.LIGHT;
+                        currentTheme.setTheme = newTheme;
+                      }),
+                  Icon(Icons.brightness_2,
+                      color: currentTheme.getOppositeTheme())
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 15),
+                    child: ElevatedButton(
+                      style: TextButton.styleFrom(
+                        minimumSize: Size(350, 40),
+                        padding: EdgeInsets.symmetric(horizontal: 80),
+                        backgroundColor: Colors.redAccent,
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      onPressed: () {
+                        service.signOut(context);
+                      },
+                      child: Text('Cerrar Sesion'),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
       ),
     );
   }
-
 }

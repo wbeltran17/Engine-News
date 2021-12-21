@@ -1,7 +1,7 @@
 import 'package:engine_news/models/mensaje.dart';
-import 'package:engine_news/models/mensaje_da.dart';
+import 'package:engine_news/DAO/mensaje_da.dart';
 import 'package:engine_news/pages/login.dart';
-import 'package:engine_news/pages/mensajewidget.dart';
+import 'package:engine_news/widget/mensajewidget.dart';
 import 'package:engine_news/providers/theme.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 
@@ -43,9 +43,7 @@ class _ActivitiesState extends State<Activities> {
                 padding: const EdgeInsets.all(4.0),
                 child: Text('Feed de Actividades',
                     style: TextStyle(
-                      color: currentTheme.isDarkTheme()
-                          ? Colors.white
-                          : Colors.black,
+                      color: currentTheme.getOppositeTheme(),
                     )),
               ),
               

@@ -164,13 +164,13 @@ Widget logo() {
   return Container(
     child: Image.network(
         'https://image.flaticon.com/icons/png/512/1253/1253826.png',
-        height: 70),
+        height: 200),
   );
 }
 
 Widget nombre() {
   return Text(
-    "Iniciar Sesión",
+    "Registro",
     style: TextStyle(
         color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold), textAlign: TextAlign.start,
   );
